@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Botao from '../Botao'
-import CampoTexto from '../CampoTexto'
-import ListaSuspensa from '../ListaSuspensa'
+import Input from '../../components/Input'
+import Button from '../../components/Button'
+import Select from '../../components/Select'
 import './Formulario.css'
 
 const Formulario = (props) => {
@@ -29,36 +29,34 @@ const Formulario = (props) => {
         <section className="formulario">
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <CampoTexto 
-                    obrigatorio={true}
+                <Input
+                    required={true}
                     label="Nome"
-                    placeholder="Digite seu nome" 
-                    valor={nome}
-                    aoAlterado={valor => setNome(valor)}
+                    placeholder="Digite seu nome"
+                    value={nome}
+                    onChange={value => setNome(value)}
                 />
-                <CampoTexto
-                    obrigatorio={true}
+                <Input
+                    required={true}
                     label="Cargo"
-                    placeholder="Digite seu cargo" 
-                    valor={cargo}
-                    aoAlterado={valor => setCargo(valor)}
+                    placeholder="Digite seu cargo"
+                    value={cargo}
+                    onChange={value => setCargo(value)}
                 />
-                <CampoTexto
+                <Input
                     label="Imagem"
-                    placeholder="Digite o endereço da imagem" 
-                    valor={imagem}
-                    aoAlterado={valor => setImagem(valor)}
+                    placeholder="Digite o endereço da imagem"
+                    value={imagem}
+                    onChange={value => setImagem(value)}
                 />
-                <ListaSuspensa
-                    obrigatorio={true}
-                    label="Time" 
-                    itens={props.times}
-                    valor={time}
-                    aoAlterado={valor => setTime(valor)}
+                <Select
+                    required={true}
+                    label="Time"
+                    teams={props.teams}
+                    value={time}
+                    onChange={value => setTime(value)}
                 />
-                <Botao>
-                    Criar Card
-                </Botao>
+                <Button label={'Create Card'} />
             </form>
         </section>
     )
